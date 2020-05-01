@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelguide/containers/home.dart';
+import 'package:travelguide/containers/tab-navigation-view.dart';
 
 void main() => runApp(TravelApp());
 
@@ -11,8 +11,9 @@ class TravelApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.white
       ),
-      home: HomePage(),
+      home: TabNavigationView(),
     );
   }
 }
