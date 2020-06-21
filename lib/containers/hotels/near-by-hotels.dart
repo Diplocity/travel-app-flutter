@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HotelListView extends StatefulWidget {
+  HotelListView({Key key}): super(key: key);
   @override
   _HotelListViewState createState() => _HotelListViewState();
 }

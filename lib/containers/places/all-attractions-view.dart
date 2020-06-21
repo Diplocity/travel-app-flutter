@@ -1,51 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:travelguide/components/attractions/attraction-card.dart';
 import 'package:travelguide/containers/places/attraction-list.dart';
+import 'package:travelguide/models/attractions.dart';
+import 'package:travelguide/providers/attraction_provider.dart';
+import 'package:travelguide/providers/home_provider.dart';
+import 'package:travelguide/services/attraction_loader.dart';
 
 class AllAttractionsView extends StatefulWidget {
+  AllAttractionsView({Key key}) : super(key: key);
+
   @override
   _AllAttractionsViewState createState() => _AllAttractionsViewState();
 }
 
 class _AllAttractionsViewState extends State<AllAttractionsView> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
-  navigateAttractionList(){
+  _navigateAttractionList(data, title) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => AttractionListView()),
+      MaterialPageRoute(
+          builder: (context) => AttractionListView(data: data, title: title)),
     );
   }
+
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    final attProvider = Provider.of<AttractionProvider>(context);
+
+
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.only(top: 30, bottom: 20, left: 8, right: 8),
-          child: Column(
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0),
-                child: Text(
-                  'All Attractions',
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-                ),
+      body: ListView.builder(
+        itemCount: attProvider.attractionList.length,
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        itemBuilder: (context, index) {
+          if (attProvider.attractionList != null) {
+            return attractionSection(attProvider.attractionList[index].attractions,
+                attProvider.attractionList[index].category);
+          } else {
+            return Container(
+              height: height,
+              child: Center(
+                child: CircularProgressIndicator(),
               ),
-              attractionSection('Nature'),
-              attractionSection('Religous'),
-              attractionSection('History'),
-            ],
-          ),
-        ),
+            );
+          }
+        },
       ),
     );
   }
 
-  Widget attractionSection(String title) {
+  Widget attractionSection(data, String title) {
     return Container(
       child: Column(
         children: <Widget>[
           InkWell(
-            onTap: navigateAttractionList,
+            onTap: () {
+              _navigateAttractionList(data, title);
+            },
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
@@ -69,21 +86,22 @@ class _AllAttractionsViewState extends State<AllAttractionsView> {
             ),
           ),
           Container(
-              height: 160,
-              child: ListView(
+              height: 170,
+              child: ListView.builder(
+                itemCount: data.length,
                 scrollDirection: Axis.horizontal,
-                children: <Widget>[
-                  attractionCard(
-                      'assets/img001.jpg', 'Place 1', "abcdefhjjhkjhsd"),
-                  attractionCard(
-                      'assets/img002.jpg', 'Place 1', "abcdefhjjhkjhsd"),
-                  attractionCard(
-                      'assets/img003.jpg', 'Place 1', "abcdefhjjhkjhsd"),
-                  attractionCard(
-                      'assets/img004.jpg', 'Place 1', "abcdefhjjhkjhsd"),
-                  attractionCard(
-                      'assets/img005.jpg', 'Place 1', "abcdefhjjhkjhsd"),
-                ],
+                itemBuilder: (context, index) {
+                  return Container(
+                    width: 190,
+                    margin: EdgeInsets.only(right: 8),
+                    child: attractionCard(
+                        context,
+                        "assets/" + data[index].image,
+                        data[index].name,
+                        data[index].country,
+                        data[index].detail),
+                  );
+                },
               ))
         ],
       ),
