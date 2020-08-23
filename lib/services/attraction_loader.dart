@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:travelguide/models/attractions.dart';
-import 'package:travelguide/models/friend.dart';
 
-Future<List<AttractionCategory> > getAttractionData() async {
-
-  String data = await rootBundle.loadString('assets/data_resources/attractionsData.json');
+Future<List<AttractionCategory>> getAttractionData() async {
+  String data =
+      await rootBundle.loadString('assets/data_resources/attractionsData.json');
   Iterable js = json.decode(data);
   List<AttractionCategory> attractions = js.map<AttractionCategory>((model) {
     return AttractionCategory.fromJson(model);
@@ -14,9 +13,9 @@ Future<List<AttractionCategory> > getAttractionData() async {
   return attractions;
 }
 
-Future<List<Attraction> > getSuggestionsData() async {
-
-  String data = await rootBundle.loadString('assets/data_resources/suggestions.json');
+Future<List<Attraction>> getSuggestionsData() async {
+  String data =
+      await rootBundle.loadString('assets/data_resources/suggestions.json');
   Iterable js = json.decode(data);
   List<Attraction> attractions = js.map<Attraction>((model) {
     return Attraction.fromJson(model);
@@ -25,9 +24,9 @@ Future<List<Attraction> > getSuggestionsData() async {
   return attractions;
 }
 
-Future<List<Attraction> > getTopRatedData() async {
-
-  String data = await rootBundle.loadString('assets/data_resources/topRatedPlaces.json');
+Future<List<Attraction>> getTopRatedData() async {
+  String data =
+      await rootBundle.loadString('assets/data_resources/topRatedPlaces.json');
   Iterable js = json.decode(data);
   List<Attraction> attractions = js.map<Attraction>((model) {
     return Attraction.fromJson(model);
@@ -35,5 +34,3 @@ Future<List<Attraction> > getTopRatedData() async {
 
   return attractions;
 }
-
-

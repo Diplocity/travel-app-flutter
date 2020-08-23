@@ -28,6 +28,7 @@ dependencies:
   image_picker: ^0.6.6+4
   flutter_feather_icons: ^1.0.3
   flutter_signin_button: ^1.0.0
+  flutter_rating_bar: ^3.0.1+1
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,8 @@ flutter:
     - assets/data_resources/
     - assets/home/
     - assets/login/
+    - assets/friends/
+    - assets/hotels/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

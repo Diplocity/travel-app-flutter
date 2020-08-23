@@ -1,19 +1,23 @@
 [
   {
-    "name": "Ipsum",
-    "image": "img002.jpg"
+    "name": "Chandler",
+    "image": "chandler.jpg"
   },
   {
-    "name": "Ipsum",
-    "image": "img008.jpg"
+    "name": "Monica",
+    "image": "monica.jpg"
   },
   {
-    "name": "Ipsum",
-    "image": "img010.jpg"
+    "name": "Joey",
+    "image": "joey.jpg"
   },
   {
-    "name": "Ipsum",
-    "image": "img011.jpg"
+    "name": "Phoebe",
+    "image": "phoebe.jpg"
+  },
+  {
+    "name": "Ross",
+    "image": "ross.jpg"
   }
 
 ]
