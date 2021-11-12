@@ -5,7 +5,7 @@ import 'package:travelguide/screens/places/attraction-list.dart';
 import 'package:travelguide/widgets/attractions/attraction-card.dart';
 
 class AllAttractionsView extends StatefulWidget {
-  AllAttractionsView({Key key}) : super(key: key);
+  AllAttractionsView({Key? key}) : super(key: key);
 
   @override
   _AllAttractionsViewState createState() => _AllAttractionsViewState();
@@ -27,7 +27,6 @@ class _AllAttractionsViewState extends State<AllAttractionsView> {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     final attProvider = Provider.of<AttractionProvider>(context);
 
     return Scaffold(
@@ -35,18 +34,9 @@ class _AllAttractionsViewState extends State<AllAttractionsView> {
         itemCount: attProvider.attractionList.length,
         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         itemBuilder: (context, index) {
-          if (attProvider.attractionList != null) {
-            return attractionSection(
-                attProvider.attractionList[index].attractions,
-                attProvider.attractionList[index].category);
-          } else {
-            return Container(
-              height: height,
-              child: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
-          }
+          return attractionSection(
+              attProvider.attractionList[index].attractions,
+              attProvider.attractionList[index].category);
         },
       ),
     );

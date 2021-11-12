@@ -37,7 +37,7 @@ class _LoginViewState extends State<LoginView> with ValidationMixin {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: ConstrainedBox(
             constraints: new BoxConstraints(minHeight: h, minWidth: w),
@@ -110,8 +110,12 @@ Widget emailField(validateEmail, onSaved) {
           labelText: 'Email',
           labelStyle: TextStyle(color: Colors.black),
           hintText: 'youremail@example.com'),
-      validator: validateEmail,
-      onSaved: onSaved);
+      validator: (String? string){
+        validateEmail();
+      },
+      onSaved: (String? string){
+        onSaved();
+      });
 }
 
 Widget passwordField(validatePassword, onSaved, obscureText, suffix) {
@@ -122,20 +126,24 @@ Widget passwordField(validatePassword, onSaved, obscureText, suffix) {
         labelText: 'Password',
         labelStyle: TextStyle(color: Colors.black),
       ),
-      validator: validatePassword,
-      onSaved: onSaved);
+      validator: (String? string){
+        validatePassword();
+      },
+      onSaved: (String? string){
+        onSaved();
+      });
 }
 
 Widget submitButton(onPressed, w) {
-  return ButtonTheme(
-      minWidth: w,
-      height: 36,
-      child: RaisedButton(
-          shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(1.0)),
-          elevation: 4.0,
-          color: Colors.white,
-          textColor: Colors.black,
+  return ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            elevation: 4.0,
+            minimumSize: Size(w, 36),
+            textStyle: TextStyle(color: Colors.black),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(1.0)),
+            ),
+          ),
           child: Text('Login'),
-          onPressed: onPressed));
+          onPressed: onPressed);
 }

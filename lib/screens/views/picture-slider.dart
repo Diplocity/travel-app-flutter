@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class PlacesPictures extends StatefulWidget {
-  final List imageList;
-  PlacesPictures({Key key, this.imageList}) : super(key: key);
+  final List? imageList;
+  PlacesPictures({Key? key, this.imageList}) : super(key: key);
   @override
   _PlacesPicturesState createState() => _PlacesPicturesState();
 }
@@ -30,8 +30,6 @@ class _PlacesPicturesState extends State<PlacesPictures> {
     var isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
 
     final slider = CarouselSlider(
-      viewportFraction: 0.8,
-      height: isPortrait ? (height / 100) * 48 : height * .7,
       items: widget.imageList != null
           ? places.map((i) {
               return Builder(
@@ -48,11 +46,19 @@ class _PlacesPicturesState extends State<PlacesPictures> {
               );
             }).toList()
           : [],
-      autoPlay: false,
-      enableInfiniteScroll: false,
-      aspectRatio: 2.0,
-      onPageChanged: onPageChanged,
-      enlargeCenterPage: true,
+      options: CarouselOptions(
+          height: isPortrait ? (height / 100) * 48 : height * .7,
+          autoPlay: false,
+          enableInfiniteScroll: false,
+          aspectRatio: 2.0,
+          enlargeCenterPage: true,
+          viewportFraction: 0.8,
+          onPageChanged: (index, reason) {
+            setState(() {
+              _current = index;
+            });
+          }
+      ),
     );
 
     return Container(

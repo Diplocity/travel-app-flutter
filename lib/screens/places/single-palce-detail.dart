@@ -6,7 +6,11 @@ class SinglePlaceDetail extends StatefulWidget {
   final String detail;
   final String country;
 
-  SinglePlaceDetail({this.image, this.name, this.detail, this.country});
+  SinglePlaceDetail(
+      {required this.image,
+      required this.name,
+      required this.detail,
+      required this.country});
 
   @override
   _SinglePlaceDetailState createState() => _SinglePlaceDetailState();

@@ -5,7 +5,7 @@ import 'package:travelguide/widgets/home/sugessions.dart';
 import 'package:travelguide/widgets/search-card.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

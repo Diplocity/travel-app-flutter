@@ -3,8 +3,8 @@ class AttractionCategory {
   List<Attraction> attractions;
 
   AttractionCategory({
-    this.category,
-    this.attractions,
+    required this.category,
+    required this.attractions,
   });
 
   factory AttractionCategory.fromJson(Map<String, dynamic> json) =>
@@ -26,7 +26,11 @@ class Attraction {
   String country;
 
   Attraction(
-      {this.name, this.detail, this.shortDetail, this.image, this.country});
+      {required this.name,
+      required this.detail,
+      required this.shortDetail,
+      required this.image,
+      required this.country});
 
   factory Attraction.fromJson(Map<String, dynamic> json) => Attraction(
         name: json['name'],

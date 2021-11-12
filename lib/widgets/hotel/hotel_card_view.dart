@@ -10,13 +10,13 @@ class HotelCardView extends StatelessWidget {
   final double rating;
 
   HotelCardView(
-      {Key key,
-      this.hotel,
-      this.address,
-      this.img,
-      this.detail,
-      this.price,
-      this.rating})
+      {Key? key,
+      required this.hotel,
+      required this.address,
+      required this.img,
+      required this.detail,
+      required this.price,
+      required this.rating})
       : super(key: key);
 
   @override

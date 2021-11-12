@@ -7,7 +7,12 @@ class AttractionCard extends StatelessWidget {
   final String country;
   final String detail;
 
-  AttractionCard({Key key, this.img, this.name, this.country, this.detail})
+  AttractionCard(
+      {Key? key,
+      required this.img,
+      required this.name,
+      required this.country,
+      required this.detail})
       : super(key: key);
 
   navigateAttractionList(BuildContext context) {

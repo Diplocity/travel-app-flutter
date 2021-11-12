@@ -4,7 +4,7 @@ import 'package:travelguide/providers/profile_provider.dart';
 import 'package:travelguide/widgets/profile/profile-comp.dart';
 
 class ProfileView extends StatefulWidget {
-  ProfileView({Key key}) : super(key: key);
+  ProfileView({Key? key}) : super(key: key);
   @override
   _ProfileViewState createState() => _ProfileViewState();
 }

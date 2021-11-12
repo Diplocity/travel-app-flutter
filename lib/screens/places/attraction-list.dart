@@ -5,7 +5,7 @@ class AttractionListView extends StatefulWidget {
   final List data;
   final String title;
 
-  AttractionListView({this.data, this.title});
+  AttractionListView({required this.data, required this.title});
   @override
   _AttractionListViewState createState() => _AttractionListViewState();
 }

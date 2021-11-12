@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travelguide/global/styles.dart';
 
-Widget bottomNavigation(int index, Function onItemTapped) {
+Widget bottomNavigation(int index, Function(int)? onItemTapped) {
   return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
@@ -12,7 +12,7 @@ Widget bottomNavigation(int index, Function onItemTapped) {
               size: 20.0,
             ),
           ),
-          title: Text('Home'),
+          label: 'Home',
         ),
         BottomNavigationBarItem(
           icon: SizedBox(
@@ -22,7 +22,7 @@ Widget bottomNavigation(int index, Function onItemTapped) {
               size: 20.0,
             ),
           ),
-          title: Text('Attractions'),
+          label: 'Attractions',
         ),
         BottomNavigationBarItem(
           icon: SizedBox(
@@ -32,7 +32,7 @@ Widget bottomNavigation(int index, Function onItemTapped) {
               size: 20.0,
             ),
           ),
-          title: Text('Profile'),
+          label: 'Profile',
         ),
         BottomNavigationBarItem(
           icon: SizedBox(
@@ -42,7 +42,7 @@ Widget bottomNavigation(int index, Function onItemTapped) {
               size: 20.0,
             ),
           ),
-          title: Text('Hotels'),
+          label: 'Hotels',
         ),
       ],
       currentIndex: index,

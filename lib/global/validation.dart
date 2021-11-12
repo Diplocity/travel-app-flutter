@@ -1,10 +1,10 @@
 class ValidationMixin {
-  String validateEmail(String value) {
-    Pattern pattern =
+   validateEmail(String? value) {
+    String pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = new RegExp(pattern);
+    RegExp regex =  RegExp(pattern);
 
-    if (value.length < 1) {
+    if (value!.length < 1) {
       return 'Email cannot be empty';
     }
 
@@ -14,7 +14,7 @@ class ValidationMixin {
     return null;
   }
 
-  String validatePassword(String value) {
+   validatePassword(String value) {
     if (value.length < 1) {
       return 'Password cannot be empty';
     }

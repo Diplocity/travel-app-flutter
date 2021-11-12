@@ -23,7 +23,6 @@ class TravelApp extends StatelessWidget {
               scaffoldBackgroundColor: Colors.white,
               fontFamily: 'Lato'),
           home: LoginView(),
-//      home: TabNavigationView(),
         ));
   }
 }

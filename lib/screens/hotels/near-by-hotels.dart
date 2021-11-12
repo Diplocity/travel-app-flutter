@@ -4,7 +4,7 @@ import 'package:travelguide/providers/hotel_provider.dart';
 import 'package:travelguide/widgets/hotel/hotel_card_view.dart';
 
 class HotelListView extends StatefulWidget {
-  HotelListView({Key key}) : super(key: key);
+  HotelListView({Key? key}) : super(key: key);
   @override
   _HotelListViewState createState() => _HotelListViewState();
 }
