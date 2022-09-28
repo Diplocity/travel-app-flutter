@@ -5,26 +5,24 @@ Widget searchCard(onValueSaved, double width, onSearchPressed) {
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(50.0),
     ),
-    margin: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+    margin: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
     child: Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50.0),
       ),
-      padding: EdgeInsets.only(left: 15.0, bottom: 0.0, top: 5.0),
+      padding: const EdgeInsets.only(left: 15.0, bottom: 0.0, top: 5.0),
       child: Row(
         children: <Widget>[
-          Container(
+          SizedBox(
             width: width * .6,
             child: textField(onValueSaved, 'Search...'),
           ),
-          Container(
-            child: IconButton(
-                icon: Icon(
-                  Icons.search,
-                  color: Colors.grey,
-                ),
-                onPressed: onSearchPressed),
-          )
+          IconButton(
+              icon: const Icon(
+                Icons.search,
+                color: Colors.grey,
+              ),
+              onPressed: onSearchPressed)
         ],
       ),
     ),
@@ -47,35 +45,32 @@ Widget icons(onCancelPressed) {
     children: <Widget>[
       Expanded(
         child: iconButton(Icons.highlight_off, "Skip",
-            Color.fromRGBO(246, 41, 111, 1), () {}),
+            const Color.fromRGBO(246, 41, 111, 1), () {}),
       ),
       Expanded(
           child: iconButton(Icons.check_circle_outline, "Taking",
-              Color.fromRGBO(0, 230, 118, 1), () {})),
+              const Color.fromRGBO(0, 230, 118, 1), () {})),
       Expanded(
         child: GestureDetector(
             onTap: () {},
             child: Column(
               children: <Widget>[
                 Container(
-                  child: Container(
-                    height: 34,
-                    width: 34,
-                    margin: EdgeInsets.only(bottom: 3),
-                    decoration: BoxDecoration(
-                        border:
-                            Border.all(color: Colors.deepOrange, width: 2.8),
-                        borderRadius: BorderRadius.circular(100)),
-                    child: Center(
-                        child: Container(
-                            child: Icon(
-                      Icons.access_alarms,
-                      size: 24.0,
-                      color: Colors.deepOrange,
-                    ))),
-                  ),
+                  height: 34,
+                  width: 34,
+                  margin: const EdgeInsets.only(bottom: 3),
+                  decoration: BoxDecoration(
+                      border:
+                          Border.all(color: Colors.deepOrange, width: 2.8),
+                      borderRadius: BorderRadius.circular(100)),
+                  child: const Center(
+                      child: Icon(
+                    Icons.access_alarms,
+                    size: 24.0,
+                    color: Colors.deepOrange,
+                  )),
                 ),
-                Text(
+                const Text(
                   "Postpone",
                   style: TextStyle(color: Colors.deepOrange, fontSize: 13),
                 )
@@ -91,12 +86,10 @@ Widget iconButton(icon, text, color, onPressed) {
       onTap: onPressed,
       child: Column(
         children: <Widget>[
-          Container(
-            child: Icon(
-              icon,
-              size: 38,
-              color: color,
-            ),
+          Icon(
+            icon,
+            size: 38,
+            color: color,
           ),
           Text(
             text,

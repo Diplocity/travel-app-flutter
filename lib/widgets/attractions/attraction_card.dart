@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travelguide/screens/places/single-palce-detail.dart';
+import 'package:travelguide/screens/places/single_palce_detail.dart';
 
 class AttractionCard extends StatelessWidget {
   final String img;
@@ -7,7 +7,7 @@ class AttractionCard extends StatelessWidget {
   final String country;
   final String detail;
 
-  AttractionCard(
+  const AttractionCard(
       {Key? key,
       required this.img,
       required this.name,
@@ -52,21 +52,21 @@ class AttractionCard extends StatelessWidget {
                     image: DecorationImage(
                         image: AssetImage(img), fit: BoxFit.cover)),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 8, left: 5),
+              Padding(
+                padding: const EdgeInsets.only(top: 8, left: 5),
                 child: Text(
                   name,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
                       color: Color.fromRGBO(74, 74, 74, 1)),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 4, left: 5),
+              Padding(
+                padding: const EdgeInsets.only(top: 4, left: 5),
                 child: Text(
                   country,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 12, color: Color.fromRGBO(133, 133, 133, 1)),
                 ),
               ),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travelguide/providers/profile_provider.dart';
-import 'package:travelguide/widgets/profile/profile-comp.dart';
+import 'package:travelguide/widgets/profile/profile_comp.dart';
 
 class ProfileView extends StatefulWidget {
-  ProfileView({Key? key}) : super(key: key);
+  const ProfileView({Key? key}) : super(key: key);
   @override
-  _ProfileViewState createState() => _ProfileViewState();
+  ProfileViewState createState() => ProfileViewState();
 }
 
-class _ProfileViewState extends State<ProfileView> {
+class ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -20,64 +20,62 @@ class _ProfileViewState extends State<ProfileView> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Container(
-                    width: width,
-                    height: isPortrait ? height / 4 : width / 4,
+        child: Column(
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+                Container(
+                  width: width,
+                  height: isPortrait ? height / 4 : width / 4,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: const AssetImage('assets/img005.jpg'),
+                          colorFilter: ColorFilter.mode(
+                              Colors.black.withOpacity(0.8),
+                              BlendMode.dstATop),
+                          fit: BoxFit.cover)),
+                ),
+                Center(
+                  child: Container(
+                    width: isPortrait ? width / 2.6 : height / 2.6,
+                    height: isPortrait ? width / 2.6 : height / 2.6,
+                    margin: EdgeInsets.only(
+                        top: isPortrait ? height / 8 : width / 8),
+                    padding: const EdgeInsets.all(5.0),
                     decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/img005.jpg'),
-                            colorFilter: ColorFilter.mode(
-                                Colors.black.withOpacity(0.8),
-                                BlendMode.dstATop),
-                            fit: BoxFit.cover)),
-                  ),
-                  Center(
-                    child: Container(
-                      width: isPortrait ? width / 2.6 : height / 2.6,
-                      height: isPortrait ? width / 2.6 : height / 2.6,
-                      margin: EdgeInsets.only(
-                          top: isPortrait ? height / 8 : width / 8),
-                      padding: EdgeInsets.all(5.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(100.0),
-                      ),
-                      child: CircleAvatar(
-                        backgroundColor: Colors.transparent,
-                        radius: 30.0,
-                        backgroundImage:
-                            AssetImage('assets/friends/rachel.jpg'),
-                      ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(100.0),
                     ),
-                  )
-                ],
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      radius: 30.0,
+                      backgroundImage:
+                          AssetImage('assets/friends/rachel.jpg'),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            nameDetails(),
+            buttonRow(width),
+            friendsRow(prMdl.friends),
+            const Padding(
+              padding: EdgeInsets.only(top: 18, bottom: 18, left: 5),
+              child: Text(
+                "My Favourite",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              nameDetails(),
-              buttonRow(width),
-              friendsRow(prMdl.friends),
-              Container(
-                margin: EdgeInsets.only(top: 18, bottom: 18, left: 5),
-                child: Text(
-                  "My Favourite",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
+            ),
+            favPlaces(prMdl.favPlaces),
+            const Padding(
+              padding: EdgeInsets.only(top: 18, bottom: 18, left: 5),
+              child: Text(
+                "I visited",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              favPlaces(prMdl.favPlaces),
-              Container(
-                margin: EdgeInsets.only(top: 18, bottom: 18, left: 5),
-                child: Text(
-                  "I visited",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-              ),
-              visitedPlaces(prMdl.visitedPlaces),
-            ],
-          ),
+            ),
+            visitedPlaces(prMdl.visitedPlaces),
+          ],
         ),
       ),
     );
@@ -85,37 +83,36 @@ class _ProfileViewState extends State<ProfileView> {
 }
 
 Widget visitedPlaces(data) {
-  return Container(
-    margin: EdgeInsets.only(top: 10, left: 15, right: 10),
+  return SizedBox(
     height: 140,
-    child: ListView.builder(
-      itemCount: data.length,
-      scrollDirection: Axis.horizontal,
-      itemBuilder: (context, index) {
-        return Container(
-            margin: EdgeInsets.only(right: 10),
-            child: visitedThumbnail(data[index].name, data[index].image));
-      },
+    child: Padding(
+      padding: const EdgeInsets.only(top: 10, left: 15, right: 10),
+      child: ListView.builder(
+        itemCount: data.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          return Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: visitedThumbnail(data[index].name, data[index].image));
+        },
+      ),
     ),
   );
 }
 
 Widget visitedThumbnail(String name, String img) {
-  return Container(
-      child: Column(
+  return Column(
     children: <Widget>[
-      Container(
-        width: 100,
-        height: 100,
-        padding: EdgeInsets.all(5.0),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0),
-            image: DecorationImage(
-                image: AssetImage('assets/' + img), fit: BoxFit.cover)),
-      ),
-      Container(
-        child: Text(name),
-      )
+  Container(
+    width: 100,
+    height: 100,
+    padding: const EdgeInsets.all(5.0),
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        image: DecorationImage(
+            image: AssetImage('assets/$img'), fit: BoxFit.cover)),
+  ),
+  Text(name)
     ],
-  ));
+  );
 }

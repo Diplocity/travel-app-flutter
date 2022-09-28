@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travelguide/providers/home_provider.dart';
 import 'package:travelguide/widgets/home/sugessions.dart';
-import 'package:travelguide/widgets/search-card.dart';
+import 'package:travelguide/widgets/search_card.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,42 +20,39 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               width: width,
               height: isPortrait ? height / 2 : width / 2,
               decoration: BoxDecoration(
                   borderRadius:
-                      BorderRadius.only(bottomRight: Radius.circular(60.0)),
+                      const BorderRadius.only(bottomRight: Radius.circular(60.0)),
                   image: DecorationImage(
-                      image: AssetImage('assets/img004.jpg'),
+                      image: const AssetImage('assets/img004.jpg'),
                       colorFilter: ColorFilter.mode(
                           Colors.black.withOpacity(0.7), BlendMode.dstATop),
                       fit: BoxFit.cover)),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(top: 80.0),
-                    child: Text(
+                  const SizedBox(height: 80.0,),
+                  const Text(
                       "Where you want to go ?",
                       style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.w500,
                           color: Colors.white),
                     ),
-                  ),
-                  Container(
-                    child: searchCard((value) {}, width, () {}),
-                  ),
+                  searchCard((value) {}, width, () {}),
+
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.all(8.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child:
                   attractionSection(homeProvider.suggestionList, "Suggestions"),
             ),
-            Container(
-              padding: EdgeInsets.all(8.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child:
                   attractionSection(homeProvider.topRatedPlaces, "Top Rated"),
             ),

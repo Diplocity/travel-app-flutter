@@ -9,7 +9,7 @@ class HotelCardView extends StatelessWidget {
   final String price;
   final double rating;
 
-  HotelCardView(
+  const HotelCardView(
       {Key? key,
       required this.hotel,
       required this.address,
@@ -27,7 +27,7 @@ class HotelCardView extends StatelessWidget {
         MediaQuery.of(context).orientation == Orientation.portrait;
 
     return Card(
-        margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
         elevation: 3,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
@@ -41,48 +41,40 @@ class HotelCardView extends StatelessWidget {
                   image: DecorationImage(
                       image: AssetImage(img), fit: BoxFit.cover)),
             ),
-            Container(
-              padding: EdgeInsets.only(top: 12, left: 20, bottom: 12),
+            Padding(
+              padding: const EdgeInsets.only(top: 12, left: 20, bottom: 12),
               child: Row(
                 children: <Widget>[
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Container(
-                          child: Text(
-                            hotel,
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
+                        Text(
+                          hotel,
+                          style: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
                         ),
-                        Container(
-                          child: Text(
-                            address,
-                            style: TextStyle(fontSize: 12),
-                          ),
+                        Text(
+                          address,
+                          style: const TextStyle(fontSize: 12),
                         ),
                       ],
                     ),
                   ),
                   Expanded(
-                      child: Container(
-                    margin: EdgeInsets.only(right: 20),
+                      child: Padding(
+                    padding: const EdgeInsets.only(right: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        Container(
-                          child: Text(
-                            price,
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
+                        Text(
+                          price,
+                          style: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
                         ),
-                        Container(
-                          child: Text(
-                            "per night",
-                            style: TextStyle(fontSize: 12),
-                          ),
+                        const Text(
+                          "per night",
+                          style: TextStyle(fontSize: 12),
                         ),
                       ],
                     ),
@@ -91,14 +83,14 @@ class HotelCardView extends StatelessWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 8, left: 20, bottom: 12),
+              padding: const EdgeInsets.only(top: 8, left: 20, bottom: 12),
               alignment: Alignment.centerLeft,
               child: RatingBarIndicator(
                 rating: rating,
                 itemCount: 5,
                 itemSize: 30.0,
-                physics: BouncingScrollPhysics(),
-                itemBuilder: (context, _) => Icon(
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, _) => const Icon(
                   Icons.star,
                   color: Colors.amber,
                 ),

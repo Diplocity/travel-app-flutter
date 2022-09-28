@@ -12,7 +12,7 @@ class AttractionCategory {
         category: json['category'],
         attractions: json['attractions'] != null
             ? (json['attractions'] as List)
-                .map((value) => new Attraction.fromJson(value))
+                .map((value) => Attraction.fromJson(value))
                 .toList()
             : [],
       );

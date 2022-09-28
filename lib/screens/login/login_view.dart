@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:travelguide/global/validation.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:travelguide/screens/tab-navigation-view.dart';
+import 'package:travelguide/screens/tab_navigation_view.dart';
 
 class LoginView extends StatefulWidget {
+  const LoginView({Key? key}) : super(key: key);
+
   @override
-  _LoginViewState createState() => _LoginViewState();
+  LoginViewState createState() => LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> with ValidationMixin {
+class LoginViewState extends State<LoginView> with ValidationMixin {
   String email = "";
   String password = "";
   bool _obscureText = true;
@@ -40,12 +42,12 @@ class _LoginViewState extends State<LoginView> with ValidationMixin {
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: ConstrainedBox(
-            constraints: new BoxConstraints(minHeight: h, minWidth: w),
+            constraints:  BoxConstraints(minHeight: h, minWidth: w),
             child: Container(
               padding: EdgeInsets.only(top: h / 6, left: 50, right: 50),
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/login/login2.jpg'),
+                      image: const AssetImage('assets/login/login2.jpg'),
                       colorFilter: ColorFilter.mode(
                           Colors.black.withOpacity(.95), BlendMode.dstATop),
                       fit: BoxFit.cover)),
@@ -57,21 +59,21 @@ class _LoginViewState extends State<LoginView> with ValidationMixin {
                   passwordField(validatePassword, (String value) {
                     password = value;
                   }, _obscureText, suffix()),
-                  Container(
-                      margin: EdgeInsets.only(top: h / 10, bottom: 20),
+                  Padding(
+                      padding: EdgeInsets.only(top: h / 10, bottom: 20),
                       child: submitButton(() {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    TabNavigationView()),
+                                    const TabNavigationView()),
                             (r) => false);
                       }, w)),
-                  Container(
-                    margin: EdgeInsets.only(top: 12, bottom: h / 6),
+                  Padding(
+                    padding: EdgeInsets.only(top: 12, bottom: h / 6),
                     child: InkWell(
                       onTap: () {},
-                      child: Text(
+                      child: const Text(
                         'Forgot Password',
                         style: TextStyle(color: Colors.white),
                       ),
@@ -80,15 +82,15 @@ class _LoginViewState extends State<LoginView> with ValidationMixin {
                   SignInButton(
                     Buttons.Google,
                     onPressed: () {},
-                    padding: EdgeInsets.symmetric(horizontal: 22),
+                    padding: const EdgeInsets.symmetric(horizontal: 22),
                   ),
-                  Container(
+                  const SizedBox(
                     height: 12,
                   ),
                   SignInButton(
                     Buttons.Facebook,
                     onPressed: () {},
-                    padding: EdgeInsets.symmetric(horizontal: 22),
+                    padding: const EdgeInsets.symmetric(horizontal: 22),
                   ),
                 ],
               ),
@@ -101,7 +103,7 @@ class _LoginViewState extends State<LoginView> with ValidationMixin {
 Widget emailField(validateEmail, onSaved) {
   return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
           suffixIcon: Icon(
             Icons.alternate_email,
             size: 20.0,
@@ -110,8 +112,9 @@ Widget emailField(validateEmail, onSaved) {
           labelText: 'Email',
           labelStyle: TextStyle(color: Colors.black),
           hintText: 'youremail@example.com'),
-      validator: (String? string){
+      validator: (value) {
         validateEmail();
+        return null;
       },
       onSaved: (String? string){
         onSaved();
@@ -124,10 +127,11 @@ Widget passwordField(validatePassword, onSaved, obscureText, suffix) {
       decoration: InputDecoration(
         suffixIcon: suffix,
         labelText: 'Password',
-        labelStyle: TextStyle(color: Colors.black),
+        labelStyle: const TextStyle(color: Colors.black),
       ),
-      validator: (String? string){
+      validator: (value){
         validatePassword();
+        return null;
       },
       onSaved: (String? string){
         onSaved();
@@ -139,11 +143,11 @@ Widget submitButton(onPressed, w) {
           style: ElevatedButton.styleFrom(
             elevation: 4.0,
             minimumSize: Size(w, 36),
-            textStyle: TextStyle(color: Colors.black),
+            textStyle: const TextStyle(color: Colors.black),
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(1.0)),
             ),
           ),
-          child: Text('Login'),
-          onPressed: onPressed);
+          onPressed: onPressed,
+          child: const Text('Login'));
 }

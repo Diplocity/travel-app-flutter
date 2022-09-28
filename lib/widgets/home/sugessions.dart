@@ -1,53 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:travelguide/screens/places/single-palce-detail.dart';
+import 'package:travelguide/screens/places/single_palce_detail.dart';
 
 Widget attractionSection(data, String title) {
-  return Container(
-    child: Column(
-      children: <Widget>[
-        InkWell(
-          onTap: () {},
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Expanded(
-                flex: 2,
-                child: Container(
-                  margin: EdgeInsets.only(top: 8, bottom: 18, left: 5),
-                  child: Text(
-                    title,
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
+  return Column(
+    children: <Widget>[
+      InkWell(
+        onTap: () {},
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8, bottom: 18, left: 5),
+                child: Text(
+                  title,
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
-              Expanded(
-                  flex: 0,
-                  child: Container(
-                    child: Icon(Icons.arrow_forward),
-                  )),
-            ],
-          ),
+            ),
+            const Expanded(
+                flex: 0,
+                child: Icon(Icons.arrow_forward)),
+          ],
         ),
-        Container(
-            height: 160,
-            child: ListView.builder(
-              itemCount: data.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return Container(
-                  width: 160,
-                  margin: EdgeInsets.only(right: 4),
-                  child: attractionCard(
-                      context,
-                      "assets/" + data[index].image,
-                      data[index].name,
-                      data[index].country,
-                      data[index].detail),
-                );
-              },
-            ))
-      ],
-    ),
+      ),
+      SizedBox(
+          height: 160,
+          child: ListView.builder(
+            itemCount: data.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return Container(
+                width: 160,
+                margin: const EdgeInsets.only(right: 4),
+                child: attractionCard(
+                    context,
+                    "assets/${data[index].image}",
+                    data[index].name,
+                    data[index].country,
+                    data[index].detail),
+              );
+            },
+          ))
+    ],
   );
 }
 
@@ -86,21 +82,21 @@ Widget attractionCard(BuildContext context, String img, String name,
                   image: DecorationImage(
                       image: AssetImage(img), fit: BoxFit.cover)),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 8, left: 5),
+            Padding(
+              padding: const EdgeInsets.only(top: 8, left: 5),
               child: Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                     color: Color.fromRGBO(74, 74, 74, 1)),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 4, left: 5),
+            Padding(
+              padding: const EdgeInsets.only(top: 4, left: 5),
               child: Text(
                 country,
-                style: TextStyle(
+                style: const TextStyle(
                     fontSize: 12, color: Color.fromRGBO(133, 133, 133, 1)),
               ),
             ),

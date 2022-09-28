@@ -5,18 +5,20 @@ import 'package:travelguide/providers/home_provider.dart';
 import 'package:travelguide/providers/hotel_provider.dart';
 import 'package:travelguide/providers/profile_provider.dart';
 import 'package:travelguide/screens/home.dart';
-import 'package:travelguide/screens/places/all-attractions-view.dart';
+import 'package:travelguide/screens/places/all_attractions_view.dart';
 import 'package:travelguide/screens/profile.dart';
 import 'package:travelguide/widgets/bottom_navigation.dart';
 
-import 'hotels/near-by-hotels.dart';
+import 'hotels/near_by_hotels.dart';
 
 class TabNavigationView extends StatefulWidget {
+  const TabNavigationView({Key? key}) : super(key: key);
+
   @override
-  _TabNavigationView createState() => _TabNavigationView();
+  TabNavigationViewState createState() => TabNavigationViewState();
 }
 
-class _TabNavigationView extends State<TabNavigationView> {
+class TabNavigationViewState extends State<TabNavigationView> {
   int _index = 0;
 
   final PageStorageBucket _bucket = PageStorageBucket();
@@ -45,15 +47,15 @@ class _TabNavigationView extends State<TabNavigationView> {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _children = <Widget>[
-      HomePage(key: PageStorageKey('home')),
-      AllAttractionsView(key: PageStorageKey('attractions')),
-      ProfileView(key: PageStorageKey('components.profile')),
-      HotelListView(key: PageStorageKey('hotels'))
+    List<Widget> children = <Widget>[
+      const HomePage(key: PageStorageKey('home')),
+      const AllAttractionsView(key: PageStorageKey('attractions')),
+      const ProfileView(key: PageStorageKey('components.profile')),
+      const HotelListView(key: PageStorageKey('hotels'))
     ];
 
     return Scaffold(
-      body: PageStorage(bucket: _bucket, child: _children.elementAt(_index)),
+      body: PageStorage(bucket: _bucket, child: children.elementAt(_index)),
       bottomNavigationBar: bottomNavigation(_index, _onItemTapped),
     );
   }

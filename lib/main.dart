@@ -7,9 +7,11 @@ import 'package:travelguide/providers/hotel_provider.dart';
 import 'package:travelguide/providers/profile_provider.dart';
 import 'package:travelguide/screens/login/login_view.dart';
 
-void main() => runApp(TravelApp());
+void main() => runApp(const TravelApp());
 
 class TravelApp extends StatelessWidget {
+  const TravelApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -19,10 +21,10 @@ class TravelApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
               primarySwatch: Colors.blue,
-              appBarTheme: AppBarTheme(color: Color.fromRGBO(41, 182, 246, 1)),
+              appBarTheme: const AppBarTheme(color: Color.fromRGBO(41, 182, 246, 1)),
               scaffoldBackgroundColor: Colors.white,
               fontFamily: 'Lato'),
-          home: LoginView(),
+          home: const LoginView(),
         ));
   }
 }

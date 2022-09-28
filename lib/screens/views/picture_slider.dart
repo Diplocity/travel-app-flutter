@@ -3,13 +3,13 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 class PlacesPictures extends StatefulWidget {
   final List? imageList;
-  PlacesPictures({Key? key, this.imageList}) : super(key: key);
+  const PlacesPictures({Key? key, this.imageList}) : super(key: key);
   @override
-  _PlacesPicturesState createState() => _PlacesPicturesState();
+  PlacesPicturesState createState() => PlacesPicturesState();
 }
 
-class _PlacesPicturesState extends State<PlacesPictures> {
-  int _current = 0;
+class PlacesPicturesState extends State<PlacesPictures> {
+  int current = 0;
   List places = [
     "img001.jpg",
     "img002.jpg",
@@ -20,7 +20,7 @@ class _PlacesPicturesState extends State<PlacesPictures> {
 
   onPageChanged(index) {
     setState(() {
-      _current = index;
+      current = index;
     });
   }
 
@@ -34,12 +34,14 @@ class _PlacesPicturesState extends State<PlacesPictures> {
           ? places.map((i) {
               return Builder(
                 builder: (BuildContext context) {
-                  return Container(
+                  return ColoredBox(
                     color: Colors.red,
-                    margin: EdgeInsets.symmetric(horizontal: 5.0),
-                    child: Image(
-                      image: AssetImage(i),
-                      fit: BoxFit.cover,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Image(
+                        image: AssetImage(i),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   );
                 },
@@ -55,16 +57,14 @@ class _PlacesPicturesState extends State<PlacesPictures> {
           viewportFraction: 0.8,
           onPageChanged: (index, reason) {
             setState(() {
-              _current = index;
+              current = index;
             });
           }
       ),
     );
 
-    return Container(
-      child: Column(
-        children: <Widget>[slider],
-      ),
+    return Column(
+      children: <Widget>[slider],
     );
   }
 }
