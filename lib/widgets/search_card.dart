@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 Widget searchCard(onValueSaved, double width, onSearchPressed) {
@@ -10,19 +11,23 @@ Widget searchCard(onValueSaved, double width, onSearchPressed) {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50.0),
       ),
-      padding: const EdgeInsets.only(left: 15.0, bottom: 0.0, top: 5.0),
+      padding: const EdgeInsets.only(left: 15.0, right: 15.0),
       child: Row(
         children: <Widget>[
-          SizedBox(
-            width: width * .6,
-            child: textField(onValueSaved, 'Search...'),
+          Expanded(
+            child: SizedBox(
+              child: textField(onValueSaved, 'search'.tr()),
+            ),
           ),
-          IconButton(
-              icon: const Icon(
-                Icons.search,
-                color: Colors.grey,
-              ),
-              onPressed: onSearchPressed)
+          Expanded(
+            flex: 0,
+            child: IconButton(
+                icon: const Icon(
+                  Icons.search,
+                  color: Colors.grey,
+                ),
+                onPressed: onSearchPressed),
+          )
         ],
       ),
     ),
@@ -37,47 +42,6 @@ Widget textField(onValueSaved, String hintText) {
       hintText: hintText,
       border: InputBorder.none,
     ),
-  );
-}
-
-Widget icons(onCancelPressed) {
-  return Row(
-    children: <Widget>[
-      Expanded(
-        child: iconButton(Icons.highlight_off, "Skip",
-            const Color.fromRGBO(246, 41, 111, 1), () {}),
-      ),
-      Expanded(
-          child: iconButton(Icons.check_circle_outline, "Taking",
-              const Color.fromRGBO(0, 230, 118, 1), () {})),
-      Expanded(
-        child: GestureDetector(
-            onTap: () {},
-            child: Column(
-              children: <Widget>[
-                Container(
-                  height: 34,
-                  width: 34,
-                  margin: const EdgeInsets.only(bottom: 3),
-                  decoration: BoxDecoration(
-                      border:
-                          Border.all(color: Colors.deepOrange, width: 2.8),
-                      borderRadius: BorderRadius.circular(100)),
-                  child: const Center(
-                      child: Icon(
-                    Icons.access_alarms,
-                    size: 24.0,
-                    color: Colors.deepOrange,
-                  )),
-                ),
-                const Text(
-                  "Postpone",
-                  style: TextStyle(color: Colors.deepOrange, fontSize: 13),
-                )
-              ],
-            )),
-      ),
-    ],
   );
 }
 

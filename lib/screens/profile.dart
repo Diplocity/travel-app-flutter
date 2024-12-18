@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travelguide/providers/profile_provider.dart';
+import 'package:travelguide/providers/theme_provider.dart';
 import 'package:travelguide/widgets/profile/profile_comp.dart';
 
 class ProfileView extends StatefulWidget {
@@ -17,6 +19,8 @@ class ProfileViewState extends State<ProfileView> {
     final prMdl = Provider.of<ProfileProvider>(context, listen: false);
     bool isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    ThemeType theme = themeProvider.themeType;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -29,10 +33,9 @@ class ProfileViewState extends State<ProfileView> {
                   height: isPortrait ? height / 4 : width / 4,
                   decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: const AssetImage('assets/img005.jpg'),
+                          image: const AssetImage('assets/places/img005.jpg'),
                           colorFilter: ColorFilter.mode(
-                              Colors.black.withOpacity(0.8),
-                              BlendMode.dstATop),
+                              Colors.black.withOpacity(0.8), BlendMode.dstATop),
                           fit: BoxFit.cover)),
                 ),
                 Center(
@@ -49,8 +52,7 @@ class ProfileViewState extends State<ProfileView> {
                     child: const CircleAvatar(
                       backgroundColor: Colors.transparent,
                       radius: 30.0,
-                      backgroundImage:
-                          AssetImage('assets/friends/rachel.jpg'),
+                      backgroundImage: AssetImage('assets/friends/rachel.jpg'),
                     ),
                   ),
                 )
@@ -58,20 +60,22 @@ class ProfileViewState extends State<ProfileView> {
             ),
             nameDetails(),
             buttonRow(width),
-            friendsRow(prMdl.friends),
-            const Padding(
-              padding: EdgeInsets.only(top: 18, bottom: 18, left: 5),
+            friendsRow(data: prMdl.friends, theme: theme),
+            Padding(
+              padding: const EdgeInsets.only(top: 18, bottom: 18, left: 5),
               child: Text(
-                "My Favourite",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                "my_favourite".tr(),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            favPlaces(prMdl.favPlaces),
-            const Padding(
-              padding: EdgeInsets.only(top: 18, bottom: 18, left: 5),
+            favPlaces(data: prMdl.favPlaces),
+            Padding(
+              padding: const EdgeInsets.only(top: 18, bottom: 18, left: 5),
               child: Text(
-                "I visited",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                "visited".tr(),
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
             visitedPlaces(prMdl.visitedPlaces),
@@ -103,16 +107,16 @@ Widget visitedPlaces(data) {
 Widget visitedThumbnail(String name, String img) {
   return Column(
     children: <Widget>[
-  Container(
-    width: 100,
-    height: 100,
-    padding: const EdgeInsets.all(5.0),
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        image: DecorationImage(
-            image: AssetImage('assets/$img'), fit: BoxFit.cover)),
-  ),
-  Text(name)
+      Container(
+        width: 100,
+        height: 100,
+        padding: const EdgeInsets.all(5.0),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            image: DecorationImage(
+                image: AssetImage('assets/$img'), fit: BoxFit.cover)),
+      ),
+      Text(name)
     ],
   );
 }

@@ -18,7 +18,7 @@ class AttractionListViewState extends State<AttractionListView> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
+          title: Text(widget.title,  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
         ),
         body: GridView.builder(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),

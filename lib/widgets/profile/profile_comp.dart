@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:travelguide/providers/theme_provider.dart';
 
 Widget nameDetails() {
   return Container(
@@ -33,7 +34,7 @@ Widget buttonRow(w) {
   );
 }
 
-Widget friendsRow(data) {
+Widget friendsRow({data, theme}) {
   return Container(
     alignment: Alignment.center,
     margin: const EdgeInsets.only(top: 30, left: 15, right: 15),
@@ -44,13 +45,13 @@ Widget friendsRow(data) {
       itemBuilder: (context, index) {
         return Container(
             margin: const EdgeInsets.only(right: 8),
-            child: friendView(data[index].name, data[index].image));
+            child: friendView(name:data[index].name, img: data[index].image, theme: theme));
       },
     ),
   );
 }
 
-Widget friendView(String name, String img) {
+Widget friendView({required String name, required String img, theme}) {
   return Column(
     children: <Widget>[
       Container(
@@ -58,7 +59,7 @@ Widget friendView(String name, String img) {
         height: 80,
         padding: const EdgeInsets.all(5.0),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: theme == ThemeType.light ? Colors.white :Colors.black,
           borderRadius: BorderRadius.circular(100.0),
         ),
         child: CircleAvatar(
@@ -72,7 +73,7 @@ Widget friendView(String name, String img) {
   );
 }
 
-Widget favPlaces(data) {
+Widget favPlaces({data}) {
   return Container(
     margin: const EdgeInsets.only(top: 10, left: 15, right: 10),
     height: 160,
@@ -82,13 +83,13 @@ Widget favPlaces(data) {
       itemBuilder: (context, index) {
         return Padding(
             padding: const EdgeInsets.only(right: 10),
-            child: favThumbnail(data[index].name, data[index].image));
+            child: favThumbnail(name:data[index].name, img: data[index].image));
       },
     ),
   );
 }
 
-Widget favThumbnail(String name, String img) {
+Widget favThumbnail({required String name, required String img}) {
   return Column(
     children: <Widget>[
       Container(

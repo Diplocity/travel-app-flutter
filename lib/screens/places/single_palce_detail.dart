@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:travelguide/providers/theme_provider.dart';
+
 
 class SinglePlaceDetail extends StatefulWidget {
   final String image;
@@ -31,8 +34,12 @@ class SinglePlaceDetailState extends State<SinglePlaceDetail> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    ThemeType theme = themeProvider.themeType;
 
     return Scaffold(
+      backgroundColor: theme == ThemeType.dark
+          ? Colors.black : Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -94,14 +101,11 @@ class SinglePlaceDetailState extends State<SinglePlaceDetail> {
                       style: const TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
-                          color: Color.fromRGBO(112, 112, 112, 1)),
+                          color: Color(0xffcfcfcf)),
                     ),
                   ),
                   Text(widget.detail,
-                      style: const TextStyle(
-                          fontSize: 13,
-                          height: 1.6,
-                          color: Color.fromRGBO(51, 51, 51, 1))),
+                      style: Theme.of(context).textTheme.bodyMedium),
                 ],
               ),
             )

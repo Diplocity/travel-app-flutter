@@ -1,48 +1,49 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:travelguide/global/styles.dart';
 
 Widget bottomNavigation(int index, Function(int)? onItemTapped) {
   return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
+      items:  <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: SizedBox(
+          icon: const SizedBox(
             height: 24,
             child: Icon(
               Icons.home,
               size: 20.0,
             ),
           ),
-          label: 'Home',
+          label: 'home'.tr(),
         ),
         BottomNavigationBarItem(
-          icon: SizedBox(
+          icon: const SizedBox(
             height: 24,
             child: Icon(
               Icons.place,
               size: 20.0,
             ),
           ),
-          label: 'Attractions',
+          label: 'attractions'.tr(),
         ),
         BottomNavigationBarItem(
-          icon: SizedBox(
+          icon: const SizedBox(
             height: 24,
             child: Icon(
               Icons.account_circle,
               size: 20.0,
             ),
           ),
-          label: 'Profile',
+          label: 'profile'.tr(),
         ),
         BottomNavigationBarItem(
-          icon: SizedBox(
+          icon: const SizedBox(
             height: 24,
             child: Icon(
               Icons.hotel,
               size: 20.0,
             ),
           ),
-          label: 'Hotels',
+          label: 'hotels'.tr(),
         ),
       ],
       currentIndex: index,
@@ -50,7 +51,6 @@ Widget bottomNavigation(int index, Function(int)? onItemTapped) {
       unselectedItemColor: kGrey,
       selectedFontSize: 12,
       onTap: onItemTapped,
-      backgroundColor: Colors.white,
       elevation: 18,
       type: BottomNavigationBarType.fixed,
       showUnselectedLabels: true);

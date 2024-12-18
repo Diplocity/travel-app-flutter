@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
@@ -42,7 +43,7 @@ class HotelCardView extends StatelessWidget {
                       image: AssetImage(img), fit: BoxFit.cover)),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 12, left: 20, bottom: 12),
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 15),
               child: Row(
                 children: <Widget>[
                   Expanded(
@@ -63,7 +64,7 @@ class HotelCardView extends StatelessWidget {
                   ),
                   Expanded(
                       child: Padding(
-                    padding: const EdgeInsets.only(right: 20),
+                    padding: const EdgeInsets.only(right: 0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
@@ -72,9 +73,9 @@ class HotelCardView extends StatelessWidget {
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
-                        const Text(
-                          "per night",
-                          style: TextStyle(fontSize: 12),
+                         Text(
+                          "per_night".tr(),
+                          style: const TextStyle(fontSize: 12),
                         ),
                       ],
                     ),
@@ -83,7 +84,7 @@ class HotelCardView extends StatelessWidget {
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 8, left: 20, bottom: 12),
+              padding: const EdgeInsets.only(top: 8, left: 15, bottom: 12),
               alignment: Alignment.centerLeft,
               child: RatingBarIndicator(
                 rating: rating,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:travelguide/screens/places/single_palce_detail.dart';
+import 'package:travelguide/providers/theme_provider.dart';
 
 class AttractionCard extends StatelessWidget {
   final String img;
@@ -30,15 +32,14 @@ class AttractionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    ThemeType theme = themeProvider.themeType;
     return Card(
       elevation: 3,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0), color: Colors.white),
-        child: InkWell(
+      child: InkWell(
           onTap: () {
             navigateAttractionList(context);
           },
@@ -53,27 +54,29 @@ class AttractionCard extends StatelessWidget {
                         image: AssetImage(img), fit: BoxFit.cover)),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 8, left: 5),
+                padding: const EdgeInsets.only(top: 8, left: 5, right: 5),
                 child: Text(
                   name,
-                  style: const TextStyle(
+                  style:  TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
-                      color: Color.fromRGBO(74, 74, 74, 1)),
+                     color: theme == ThemeType.dark
+                  ?  const Color(0xffcfcfcf) :  const Color(0xff4a4a4a)),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 4, left: 5),
+                padding: const EdgeInsets.only(top: 4, left: 5, right: 5),
                 child: Text(
                   country,
-                  style: const TextStyle(
-                      fontSize: 12, color: Color.fromRGBO(133, 133, 133, 1)),
+                  style:  TextStyle(
+                      fontSize: 12, color: theme == ThemeType.dark
+                  ?  const Color(0xffcfcfcf) :  const Color(0xff858585)),
                 ),
               ),
             ],
           ),
         ),
-      ),
+
     );
   }
 }

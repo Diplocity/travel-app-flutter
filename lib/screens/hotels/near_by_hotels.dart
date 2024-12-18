@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:travelguide/providers/hotel_provider.dart';
@@ -20,15 +21,15 @@ class HotelListViewState extends State<HotelListView> {
       body: Stack(children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget>[
+          children:  <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: 50, left: 20),
+              padding: const EdgeInsets.only(top: 78, left: 20, right: 20),
               child: Text(
-                "Find a place to stay..",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                "find_a_place".tr(),
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
           ],

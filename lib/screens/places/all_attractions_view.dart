@@ -32,7 +32,7 @@ class AllAttractionsViewState extends State<AllAttractionsView> {
     return Scaffold(
       body: ListView.builder(
         itemCount: attProvider.attractionList.length,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 60, bottom: 20 ),
         itemBuilder: (context, index) {
           return attractionSection(
               attProvider.attractionList[index].attractions,
@@ -55,7 +55,7 @@ class AllAttractionsViewState extends State<AllAttractionsView> {
               Expanded(
                 flex: 2,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 18, bottom: 18, left: 5),
+                  padding: const EdgeInsets.only(top: 18, bottom: 18, left: 5, right: 5),
                   child: Text(
                     title,
                     style:
@@ -75,9 +75,8 @@ class AllAttractionsViewState extends State<AllAttractionsView> {
               itemCount: data.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return Container(
+                return SizedBox(
                   width: 190,
-                  margin: const EdgeInsets.only(right: 8),
                   child: AttractionCard(
                       img: "assets/${data[index].image}",
                       name: data[index].name,
